@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Tab Links */
+    .tabs {
+        display: flex;
+    }
+
+    .tablinks {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+        padding: 1rem;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    .tablinks:hover {
+        background: #3485d9;
+        color: #fff;
+    }
+
+    /* Tab active */
+    .tablinks.active {
+        background: #3485d9;
+        color: #fff;
+    }
+
+    /* tab content */
+    .tabcontent {
+        display: none;
+    }
+
+    /* Text*/
+    .tabcontent p {
+        color: #333;
+        font-size: 16px;
+    }
+
+    /* tab content active */
+    .tabcontent.active {
+        display: block;
+    }
+</style>
+
+<body>
+    <!-- Tab links -->
+    <div class="tabs">
+        <button class="tablinks active" data-electronic="allAppointment">Tất Cả ()</button>
+        <button class="tablinks" data-electronic="scheduled">Đã Lên Lịch ()</button>
+        <button class="tablinks" data-electronic="finished">Đã Kết Thúc ()</button>
+        <button class="tablinks" data-electronic="confirmed">Đã Xác Nhận ()</button>
+        <button class="tablinks" data-electronic="canceled">Đã Hủy ()</button>
+        <button class="tablinks" data-electronic="invoiced">In Hóa Đơn ()</button>
+        <button class="tablinks" data-electronic="rejection_requested">Yêu cầu từ chối ()</button>
+        <button class="tablinks" data-electronic="rejected">Đã từ chối ()</button>
+    </div>
+
+    <!-- Tab content -->
+    <div class="wrapper_tabcontent">
+        <div id="allAppointment" class="tabcontent active">
+
+            <h3>Combo Trạm Hàn Hakko 936 + Sensor Hàn A1321</h3>
+        </div>
+
+        <div id="scheduled" class="tabcontent">
+            <h3>Raspberry Pi 4 Model B 2019</h3>
+        </div>
+
+        <div id="finished" class="tabcontent">
+            <h3>Module Khuếch Đại Âm Thanh Bluetooth Stereo 30W/40W Công Suất Cao XY-P40W</h3>
+        </div>
+        <div id="confirmed" class="tabcontent">
+            <h3>Raspberry Pi 4 Model B 2019</h3>
+        </div>
+
+        <div id="canceled" class="tabcontent">
+            <h3>Module Khuếch Đại Âm Thanh Bluetooth Stereo 30W/40W Công Suất Cao XY-P40W</h3>
+        </div>
+        <div id="invoiced" class="tabcontent">
+            <h3>Raspberry Pi 4 Model B invoiced</h3>
+        </div>
+
+        <div id="rejection_requested" class="tabcontent">
+            <h3>Module Khuếch Đại Âm Thanh Bluetooth rejection_requested 30W/40W Công Suất Cao XY-P40W</h3>
+        </div>
+        <div id="rejected" class="tabcontent">
+            <h3>Raspberry Pi 4 Model B rejected</h3>
+        </div>
+
+    </div>
+</body>
+<script>
+    var tabLinks = document.querySelectorAll(".tablinks");
+    var tabContent = document.querySelectorAll(".tabcontent");
+
+    tabLinks.forEach(function (el) {
+        el.addEventListener("click", openTabs);
+    });
+
+
+    function openTabs(el) {
+        var btn = el.currentTarget; // lắng nghe sự kiện và hiển thị các element
+        var electronic = btn.dataset.electronic; // lấy giá trị trong data-electronic
+
+        tabContent.forEach(function (el) {
+            el.classList.remove("active");
+        });
+
+        tabLinks.forEach(function (el) {
+            el.classList.remove("active");
+        });
+
+        document.querySelector("#" + electronic).classList.add("active");
+
+        btn.classList.add("active");
+    }
+</script>
+
+</html>
